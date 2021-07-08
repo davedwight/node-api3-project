@@ -9,9 +9,6 @@ server.use(express.json());
 const usersRouter = require('./users/users-router');
 const {
   logger,
-  validateUserId,
-  validateUser,
-  validatePost,
   notFound,
   errorHandling,
 } = require('./middleware/middleware');
@@ -20,7 +17,7 @@ server.use('/', logger);
 
 server.use('/api/users', usersRouter);
 
-server.get('/', logger, (req, res, next) => {
+server.get('/', logger, (req, res, next) => { // eslint-disable-line
   res.send(`<h2>Let's write some middleware!</h2>`);
 });
 

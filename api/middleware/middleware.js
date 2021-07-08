@@ -1,5 +1,4 @@
 const User = require('../users/users-model');
-const Post = require('../posts/posts-model'); 
 
 function logger(req, res, next) {
   console.log('req.method', req.method);
@@ -49,7 +48,7 @@ function validatePost(req, res, next) {
   }
 }
 
-const notFound = (req, res, next) => {
+const notFound = (req, res, next) => { // eslint-disable-line
   res.status(404).json({
     message: 'not found, sorry!'
   })

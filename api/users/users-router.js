@@ -6,12 +6,9 @@ const User = require('../users/users-model');
 const Post = require('../posts/posts-model'); 
 
 const {
-  logger,
   validateUserId,
   validateUser,
   validatePost,
-  notFound,
-  errorHandling,
 } = require('../middleware/middleware');
 
 const router = express.Router();
@@ -28,7 +25,7 @@ router.get('/', (req, res) => {
     })
 });
 
-router.get('/:id', validateUserId, (req, res, next) => {
+router.get('/:id', validateUserId, (req, res, next) => { // eslint-disable-line
   // RETURN THE USER OBJECT
   // this needs a middleware to verify user id
   res.json(req.user);
@@ -60,6 +57,7 @@ router.delete('/:id', validateUserId, (req, res, next) => {
   // this needs a middleware to verify user id
   User.remove(req.params.id)
     .then(post => {
+      console.log(post);
       res.json(req.user);
     })
     .catch(next);
