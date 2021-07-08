@@ -39,6 +39,14 @@ function validateUser(req, res, next) {
 
 function validatePost(req, res, next) {
   // DO YOUR MAGIC
+  if (!req.body.text) {
+    next({
+      status: 400,
+      message: "missing required text field",
+    })
+  } else {
+    next();
+  }
 }
 
 const notFound = (req, res, next) => {
