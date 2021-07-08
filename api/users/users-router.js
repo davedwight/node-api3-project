@@ -60,7 +60,7 @@ router.delete('/:id', validateUserId, (req, res, next) => {
   // this needs a middleware to verify user id
   User.remove(req.params.id)
     .then(post => {
-      res.status(200).json(post);
+      res.json(req.user);
     })
     .catch(next);
 });
